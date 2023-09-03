@@ -6,28 +6,72 @@
 <head runat="server">
     <title></title>
     <style type="text/css">
+
+        .FormContent{
+            width: 800px;
+            margin-left:  30px;
+        }
         .textbox {
             width: 250px;
+            height: 25px;
+        }
+        .deptTextbox{
+            width: 260px;
+            height: 25px;
+        }
+
+        .headingRow{
+            margin-bottom: 20px;
+           
+        }
+
+        .headingRowContent{
+            font-size: medium;
+            
         }
 
         #add{
-            background-color:aqua;
+            background-color: blue;
+            color: white;
         }
-        #edit{}
-        #delete{}
+        #edit{
+            background-color: fuchsia;
+            color: white;
+        }
+        #delete{
+            background-color: crimson;
+            color:white;
+        }
+
+        
+        .auto-style1 {
+            height: 36px;
+        }
+        .auto-style2 {
+            height: 36px;
+        }
+        .auto-style3 {
+            height: 36px;
+        }
+        
+        
+        
+        .auto-style4 {
+            width: 100%;
+        }
+        
+        
         
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <table style="width: 100%;">
-                <tr>
-                    <th colspan="2">Employee CRUD operations</th>
+        <div class="FormContent">
+            <table class="auto-style4">
+                <tr class="headingRow">
+                    <th class="headingRowContent" colspan="2" style="font-family: 'Arial Black'; font-size: medium; font-weight: 300; font-style: normal; font-variant: normal; color: #000080">Employee CRUD Operations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
                 </tr>
-                <tr>
-                    <td></td>
-                </tr>
+                
                 <tr>
                     <td class="auto-style1">Employee ID</td>
                     <td>
@@ -62,7 +106,7 @@
                 <tr>
                     <td class="auto-style1">Employee Department</td>
                     <td>
-                        <select id="Select1" name="department" class="textbox">
+                        <select id="Select1" name="department" class="deptTextbox">
                             <option>HR</option>
                             <option>Developer</option>
                             <option>Engineer</option>
@@ -87,13 +131,14 @@
                     <td>
                         <input id="Text1" type="text" class="textbox"/></td>
                 </tr>
+                
                 <tr>
                     <td></td>
                     <td>
                         
-                        <input id="add" type="button" value="Add Employee" />
-                        <input id="edit" type="button" value="Edit Employee" />
-                        <input id="delete" type="button" value="Delete Employee" /></td>
+                        <input id="add" type="button" value="Add Employee" class="auto-style1" />
+                        <input id="edit" type="button" value="Edit Employee" class="auto-style2" />
+                        <input id="delete" type="button" value="Delete Employee" class="auto-style3" /></td>
                 </tr>
                 
             </table>
