@@ -11,7 +11,8 @@
         }
 
         .auto-style2 {
-            width: 293px;
+            width: 336px;
+            margin-left: 30px;
         }
 
         .auto-style3 {
@@ -23,7 +24,7 @@
     <form id="form1" runat="server">
         <table style="width: 100%;">
             <tr>
-                <td class="auto-style2">Employee Payroll CRUD </td>
+                <td class="auto-style2" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:28px;" >Employee Payroll CRUD </td>
                 <td class="auto-style1">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -42,7 +43,7 @@
             </tr>
 
             <tr>
-                <td>Employee Gender</td>
+                <td class="auto-style2">Employee Gender</td>
                 <td>
                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem>Male</asp:ListItem>
@@ -52,19 +53,19 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Employee Email</td>
+                <td class="auto-style2">Employee Email</td>
                 <td>
                     <asp:TextBox ID="TextBox3" runat="server" Width="210px" Height="25px"></asp:TextBox>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Employee Contact</td>
+                <td class="auto-style2">Employee Contact</td>
                 <td>
                     <asp:TextBox ID="TextBox4" runat="server" Width="210px" Height="25px"></asp:TextBox>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Employee Department</td>
+                <td class="auto-style2">Employee Department</td>
                 <td>
                     &nbsp;<asp:DropDownList ID="DropDownList1" runat="server" Font-Size="Medium" Height="25px" Width="210px">
                         <asp:ListItem>HR</asp:ListItem>
@@ -79,40 +80,45 @@
             </tr>
 
             <tr>
-                <td>Employee Start date</td>
+                <td class="auto-style2">Employee Start date</td>
                 <td>
                     <asp:TextBox ID="TextBox5" runat="server" Width="210px" Height="25px"></asp:TextBox>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Employee Salary</td>
+                <td class="auto-style2">Employee Salary</td>
                 <td>
                     <asp:TextBox ID="TextBox6" runat="server" Width="210px" Height="25px"></asp:TextBox>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Employee Notes</td>
+                <td class="auto-style2">Employee Notes</td>
                 <td>
                     <asp:TextBox ID="TextBox7" runat="server" Width="210px" Height="25px"></asp:TextBox>
 
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:Button ID="Button1" runat="server" Text="Add Employee" BackColor="#0000CC" ForeColor="White" OnClick="Button1_Click" Height="33px" />&nbsp;
-                    <asp:Button ID="Button2" runat="server" Text="Edit Employee" BackColor="#CC00FF" ForeColor="White" Height="33px" />&nbsp;
-                    <asp:Button ID="Button3" runat="server" Text="Delete Employee" BackColor="Red" ForeColor="White" Height="33px" />
-                </td>
+                
+                <td class="auto-style2">
+                    &nbsp;
+                    &nbsp;
+                    </td>
             </tr>
         </table>
         <p class="auto-style3">
+
+                    <asp:Button ID="Button1" runat="server" Text="Add Employee" BackColor="#0000CC" ForeColor="White" OnClick="Button1_Click" Height="38px" />
+                    <asp:Button ID="Button2" runat="server" Text="Edit Employee" BackColor="#CC00FF" ForeColor="White" Height="38px" OnClick="Button2_Click" />
+                    <asp:Button ID="Button3" runat="server" Text="Delete Employee" BackColor="Red" ForeColor="White" Height="38px" OnClick="Button3_Click" />
 
             <br />
 
         </p>
 
-        <asp:GridView ID="GridView1" runat="server" Width="717px">
+        <asp:GridView ID="GridView1" runat="server" Width="1284px" HorizontalAlign="Center" >
+            <AlternatingRowStyle BackColor="#6699FF" />
             <HeaderStyle BackColor="#6600CC" ForeColor="White" />
+            <RowStyle HorizontalAlign="Center" />
         </asp:GridView>
 
     </form>
