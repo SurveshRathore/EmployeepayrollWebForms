@@ -75,12 +75,12 @@
                 <tr>
                     <td class="auto-style1">Employee ID</td>
                     <td>
-                        <input id="Text1" type="text" class="textbox" /></td>
+                        <input id="TextId" type="text" class="textbox" /></td>
                 </tr>
                 <tr>
                     <td class="auto-style1">Employee Name</td>
                     <td>
-                        <input id="Text1" type="text" class="textbox" />
+                        <input id="Textname" type="text" class="textbox" />
                     </td>
                 </tr>
                 <tr>
@@ -95,13 +95,13 @@
                 <tr>
                     <td class="auto-style1">Employee Email</td>
                     <td>
-                        <input id="Text1" type="text" class="textbox" />
+                        <input id="email" type="text" class="textbox" />
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style1">Employee Contact</td>
                     <td>
-                        <input id="Text1" type="number" class="textbox" /></td>
+                        <input id="contact" type="number" class="textbox" /></td>
                 </tr>
                 <tr>
                     <td class="auto-style1">Employee Department</td>
@@ -118,18 +118,18 @@
                 <tr>
                     <td class="auto-style1">Employee Start Date</td>
                     <td>
-                        <input id="Text1" type="text" class="textbox"/></td>
+                        <input id="date" type="text" class="textbox"/></td>
                 </tr>
                 <tr>
                     <td class="auto-style1">Employee Salary</td>
-                    <td>
-                        <input id="Text1" type="text" class="textbox"/>
+                    <td class="auto-style1">
+                        <input id="salary" type="text" class="textbox"/>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style1">Employee Notes</td>
                     <td>
-                        <input id="Text1" type="text" class="textbox"/></td>
+                        <input id="notes" type="text" class="textbox"/></td>
                 </tr>
                 
                 <tr>
