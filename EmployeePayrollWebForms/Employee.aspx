@@ -54,8 +54,7 @@
             height: 36px;
         }
         
-        
-        
+              
         .auto-style4 {
             width: 100%;
         }
