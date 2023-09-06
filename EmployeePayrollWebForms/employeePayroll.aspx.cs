@@ -160,6 +160,16 @@ namespace EmployeePayrollWebForms
             GetProductList();
         }
 
-        
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            sqlConnection.Open();
+            SqlCommand sqlCommand = new SqlCommand("exec spDeleteEmployee '" + id + "' ", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully delete the employee record.');", true);
+            GridView1.EditIndex = -1;
+            GetProductList();
+        }
     }
 }
