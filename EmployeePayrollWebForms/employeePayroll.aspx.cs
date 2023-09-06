@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace EmployeePayrollWebForms
 {
@@ -37,9 +40,9 @@ namespace EmployeePayrollWebForms
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successful Inserted.');", true);
                 GetProductList();
                 sqlConnection.Close();
-                //TextBox1.Text = TextBox2.Text = TextBox3.Text = TextBox4.Text = TextBox5.Text = TextBox6.Text = TextBox7.Text = String.Empty;
-                //RadioButtonList1.ClearSelection();
-                //DropDownList1.ClearSelection();
+                TextBox1.Text = TextBox2.Text = TextBox3.Text = TextBox4.Text = TextBox5.Text = TextBox6.Text = TextBox7.Text = String.Empty;
+                RadioButtonList1.ClearSelection();
+                DropDownList1.ClearSelection();
 
             }
             catch (Exception ex)
@@ -86,9 +89,9 @@ namespace EmployeePayrollWebForms
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successful update the record.');", true);
                 GetProductList();
                 sqlConnection.Close();
-                //TextBox1.Text = TextBox2.Text = TextBox3.Text = TextBox4.Text = TextBox5.Text = TextBox6.Text = TextBox7.Text = String.Empty;
-                //RadioButtonList1.ClearSelection();
-                //DropDownList1.ClearSelection();
+                TextBox1.Text = TextBox2.Text = TextBox3.Text = TextBox4.Text = TextBox5.Text = TextBox6.Text = TextBox7.Text = String.Empty;
+                RadioButtonList1.ClearSelection();
+                DropDownList1.ClearSelection();
 
             }
             catch (Exception ex)
@@ -120,5 +123,43 @@ namespace EmployeePayrollWebForms
                 throw;
             }
         }
+
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            GetProductList();
+        }
+
+      
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()) ;
+            string name = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+            string gender = ((TextBox)GridView1.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
+            string email = ((TextBox)GridView1.Rows[e.RowIndex].Cells[3].Controls[0]).Text;
+            string contact = ((TextBox)GridView1.Rows[e.RowIndex].Cells[4].Controls[0]).Text;
+            string department = ((TextBox)GridView1.Rows[e.RowIndex].Cells[5].Controls[0]).Text;
+            DateTime startDate = Convert.ToDateTime(((TextBox)GridView1.Rows[e.RowIndex].Cells[6].Controls[0]).Text);
+            int salary = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            string notes = ((TextBox)GridView1.Rows[e.RowIndex].Cells[8].Controls[0]).Text;
+
+            sqlConnection.Open();
+            SqlCommand sqlCommand = new SqlCommand("exec spUpdateEmployee '" + id + "','" + name + "','" + gender + "','" + email + "','" + contact + "','" + department + "','" + startDate + "','" + salary + "','" + notes + "' ", sqlConnection);
+            
+            sqlCommand.ExecuteNonQuery();
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully update the employee record.');", true);
+            GridView1.EditIndex = -1;
+            GetProductList();
+        }
+
+        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            GetProductList();
+        }
+
+        
     }
 }
