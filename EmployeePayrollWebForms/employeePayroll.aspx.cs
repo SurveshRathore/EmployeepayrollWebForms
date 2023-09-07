@@ -18,7 +18,7 @@ namespace EmployeePayrollWebForms
         {
             if (!IsPostBack)
             {
-                GetProductList();
+                //GetProductList();
             }
         }
         SqlConnection sqlConnection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EmployeePayrollWebForm;Integrated Security=True;");
@@ -26,7 +26,8 @@ namespace EmployeePayrollWebForms
         {
             try
             {
-                int id = int.Parse(TextBox1.Text), salary = int.Parse(TextBox6.Text);
+                //int id = int.Parse(TextBox1.Text), 
+                int salary = int.Parse(TextBox6.Text);
                 string name = TextBox2.Text, gender = RadioButtonList1.SelectedValue, department = DropDownList1.SelectedValue, email = TextBox3.Text, notes = TextBox7.Text;
                 long contact = long.Parse(TextBox4.Text);
                 DateTime startDate = DateTime.Parse(TextBox5.Text);
@@ -37,9 +38,11 @@ namespace EmployeePayrollWebForms
                 //SqlCommand sqlCommand = new SqlCommand("exec spAddEmployee '" + id + "','" + name + "','" + gender + "','" + email + "','" + contact + "','" + department + "','" + startDate + "','" + salary + "','" + notes + "','" + sqlConnection);
                 SqlCommand sqlCommand = new SqlCommand("exec spAddEmployee '" + name + "','" + gender + "','" + email + "','" + contact + "','" + department + "','" + startDate + "','" + salary + "','" + notes + "' " , sqlConnection);
                 sqlCommand.ExecuteNonQuery();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successful Inserted.');", true);
-                GetProductList();
+                Response.Redirect("EmployeeList.aspx");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successful Inserted.');", true);
+                //GetProductList();
                 sqlConnection.Close();
+
                 TextBox1.Text = TextBox2.Text = TextBox3.Text = TextBox4.Text = TextBox5.Text = TextBox6.Text = TextBox7.Text = String.Empty;
                 RadioButtonList1.ClearSelection();
                 DropDownList1.ClearSelection();
@@ -52,124 +55,130 @@ namespace EmployeePayrollWebForms
             }
         }
 
-        void GetProductList()
-        {
-            try
-            {
-                SqlCommand sqlCommand = new SqlCommand("exec spGetAllEmployee", sqlConnection);
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-                GridView1.DataSource = dataTable;
-                GridView1.DataBind();
+        //void GetProductList()
+        //{
+        //    try
+        //    {
+        //        SqlCommand sqlCommand = new SqlCommand("exec spGetAllEmployee", sqlConnection);
+        //        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+        //        DataTable dataTable = new DataTable();
+        //        sqlDataAdapter.Fill(dataTable);
+        //        GridView1.DataSource = dataTable;
+        //        GridView1.DataBind();
 
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         //update the   record
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(TextBox1.Text), salary = int.Parse(TextBox6.Text);
-                string name = TextBox2.Text, gender = RadioButtonList1.SelectedValue, department = DropDownList1.SelectedValue, email = TextBox3.Text, notes = TextBox7.Text;
-                long contact = long.Parse(TextBox4.Text);
-                DateTime startDate = DateTime.Parse(TextBox5.Text);
+
+        //protected void Button2_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        int id = int.Parse(TextBox1.Text), salary = int.Parse(TextBox6.Text);
+        //        string name = TextBox2.Text, gender = RadioButtonList1.SelectedValue, department = DropDownList1.SelectedValue, email = TextBox3.Text, notes = TextBox7.Text;
+        //        long contact = long.Parse(TextBox4.Text);
+        //        DateTime startDate = DateTime.Parse(TextBox5.Text);
 
 
-                sqlConnection.Open();
-                //string query = "spAddEmployee"
-                SqlCommand sqlCommand = new SqlCommand("exec spUpdateEmployee '" + id + "','" + name + "','" + gender + "','" + email + "','" + contact + "','" + department + "','" + startDate + "','" + salary + "','" + notes + "' ", sqlConnection);
+        //        sqlConnection.Open();
+        //        //string query = "spAddEmployee"
+        //        SqlCommand sqlCommand = new SqlCommand("exec spUpdateEmployee '" + id + "','" + name + "','" + gender + "','" + email + "','" + contact + "','" + department + "','" + startDate + "','" + salary + "','" + notes + "' ", sqlConnection);
 
-                sqlCommand.ExecuteNonQuery();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successful update the record.');", true);
-                GetProductList();
-                sqlConnection.Close();
-                TextBox1.Text = TextBox2.Text = TextBox3.Text = TextBox4.Text = TextBox5.Text = TextBox6.Text = TextBox7.Text = String.Empty;
-                RadioButtonList1.ClearSelection();
-                DropDownList1.ClearSelection();
+        //        sqlCommand.ExecuteNonQuery();
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successful update the record.');", true);
+        //        GetProductList();
+        //        sqlConnection.Close();
+        //        TextBox1.Text = TextBox2.Text = TextBox3.Text = TextBox4.Text = TextBox5.Text = TextBox6.Text = TextBox7.Text = String.Empty;
+        //        RadioButtonList1.ClearSelection();
+        //        DropDownList1.ClearSelection();
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw ex;
-            }
-        }
+        //        throw ex;
+        //    }
+        //}
 
-        // Delete the record
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(TextBox1.Text);
+        //// Delete the record
+        //protected void Button3_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        int id = int.Parse(TextBox1.Text);
 
-                sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand("exec spDeleteEmployee '" + id + "'", sqlConnection);
-                sqlCommand.ExecuteNonQuery();
+        //        sqlConnection.Open();
+        //        SqlCommand sqlCommand = new SqlCommand("exec spDeleteEmployee '" + id + "'", sqlConnection);
+        //        sqlCommand.ExecuteNonQuery();
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully delete the employee record.');", true);
-                GetProductList();
-                TextBox1.Text = String.Empty;
-                sqlConnection.Close();
-            }
-            catch (Exception)
-            {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully delete the employee record.');", true);
+        //        GetProductList();
+        //        TextBox1.Text = String.Empty;
+        //        sqlConnection.Close();
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
-        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            GridView1.EditIndex = e.NewEditIndex;
-            GetProductList();
-        }
+        //protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        //{
+        //    GridView1.EditIndex = e.NewEditIndex;
+        //    GetProductList();
+        //}
 
       
 
-        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()) ;
-            string name = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
-            string gender = ((TextBox)GridView1.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
-            string email = ((TextBox)GridView1.Rows[e.RowIndex].Cells[3].Controls[0]).Text;
-            string contact = ((TextBox)GridView1.Rows[e.RowIndex].Cells[4].Controls[0]).Text;
-            string department = ((TextBox)GridView1.Rows[e.RowIndex].Cells[5].Controls[0]).Text;
-            DateTime startDate = Convert.ToDateTime(((TextBox)GridView1.Rows[e.RowIndex].Cells[6].Controls[0]).Text);
-            int salary = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
-            string notes = ((TextBox)GridView1.Rows[e.RowIndex].Cells[8].Controls[0]).Text;
+        //protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        //{
+        //    int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()) ;
+        //    string name = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+        //    string gender = ((TextBox)GridView1.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
+        //    string email = ((TextBox)GridView1.Rows[e.RowIndex].Cells[3].Controls[0]).Text;
+        //    string contact = ((TextBox)GridView1.Rows[e.RowIndex].Cells[4].Controls[0]).Text;
+        //    string department = ((TextBox)GridView1.Rows[e.RowIndex].Cells[5].Controls[0]).Text;
+        //    DateTime startDate = Convert.ToDateTime(((TextBox)GridView1.Rows[e.RowIndex].Cells[6].Controls[0]).Text);
+        //    int salary = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
+        //    string notes = ((TextBox)GridView1.Rows[e.RowIndex].Cells[8].Controls[0]).Text;
 
-            sqlConnection.Open();
-            SqlCommand sqlCommand = new SqlCommand("exec spUpdateEmployee '" + id + "','" + name + "','" + gender + "','" + email + "','" + contact + "','" + department + "','" + startDate + "','" + salary + "','" + notes + "' ", sqlConnection);
+        //    sqlConnection.Open();
+        //    SqlCommand sqlCommand = new SqlCommand("exec spUpdateEmployee '" + id + "','" + name + "','" + gender + "','" + email + "','" + contact + "','" + department + "','" + startDate + "','" + salary + "','" + notes + "' ", sqlConnection);
             
-            sqlCommand.ExecuteNonQuery();
+        //    sqlCommand.ExecuteNonQuery();
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully update the employee record.');", true);
-            GridView1.EditIndex = -1;
-            GetProductList();
-        }
+        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully update the employee record.');", true);
+        //    GridView1.EditIndex = -1;
+        //    GetProductList();
+        //}
 
-        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        //protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        //{
+        //    GridView1.EditIndex = -1;
+        //    GetProductList();
+        //}
+
+        //protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        //{
+        //    int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
+        //    sqlConnection.Open();
+        //    SqlCommand sqlCommand = new SqlCommand("exec spDeleteEmployee '" + id + "' ", sqlConnection);
+        //    sqlCommand.ExecuteNonQuery();
+
+        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully delete the employee record.');", true);
+        //    GridView1.EditIndex = -1;
+        //    GetProductList();
+        //}
+
+        protected void Button2_Click1(object sender, EventArgs e)
         {
-            GridView1.EditIndex = -1;
-            GetProductList();
-        }
-
-        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
-            sqlConnection.Open();
-            SqlCommand sqlCommand = new SqlCommand("exec spDeleteEmployee '" + id + "' ", sqlConnection);
-            sqlCommand.ExecuteNonQuery();
-
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully delete the employee record.');", true);
-            GridView1.EditIndex = -1;
-            GetProductList();
+            Response.Redirect("EmployeeList.aspx");
         }
     }
 }

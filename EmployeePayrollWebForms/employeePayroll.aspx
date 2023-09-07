@@ -25,7 +25,20 @@
             <tr>
                 <td class="auto-style2">Employee Payroll CRUD </td>
                 <td class="auto-style1">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                
+                 <td>&nbsp;</td>
+                 <td>&nbsp;</td>
+                <td>
+
+                    <asp:Button ID="Button2" runat="server" BackColor="#0000CC" ForeColor="White" OnClick="Button2_Click1" Text="Show List" />
+
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2">Employee ID</td>
@@ -111,7 +124,7 @@
 
         </p>
 
-        <asp:GridView ID="GridView1" runat="server" Width="1232px" AutoGenerateColumns="False" DataKeyNames="EmployeeID" OnRowEditing="GridView1_RowEditing"  OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting">
+<%--        <asp:GridView ID="GridView1" runat="server" Width="1180px" AutoGenerateColumns="False" DataKeyNames="EmployeeID" OnRowEditing="GridView1_RowEditing"  OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting">
             <Columns>
                 <asp:BoundField DataField="EmployeeID" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="EmployeeName" HeaderText="Name" />
@@ -131,7 +144,7 @@
             </Columns>
             <HeaderStyle BackColor="#6600CC" ForeColor="White" />
             <RowStyle HorizontalAlign="Center" />
-        </asp:GridView>
+        </asp:GridView>--%>
 
     </form>
 </body>
